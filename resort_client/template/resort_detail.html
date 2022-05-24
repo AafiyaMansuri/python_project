@@ -1,0 +1,181 @@
+{% extends "header_footer.html" %}
+{% load static %}
+{% block content %}
+<img src="{% static 'assets/img/myimgs/banner.png' %}" alt="Images" width="100%" height="550">
+<div class="gallery-area pt-80 pb-80">
+    <div class="container">
+        <div class="tab gallery-tab">
+            <ul class="tabs text-left">
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Packges</a>
+                </li>
+                <li>
+                    <a href="#">Rooms</a>
+                </li>
+                <li>
+                    <a href="#">Gallery</a>
+                </li>
+            </ul>
+            <div class="tab_content current active pt-45">
+                <div class="tabs_item current">
+                    <div class="gallery-tab-item">
+                        <div class="gallery-view">
+                            <div class="row">
+                                <!---->
+                                <div class="col-lg-6">
+                                    <div class="book-content-two">
+                                        <div class="section-title">
+                                            <div class="container">
+                                                <h3>Royal-Stay Resorts</h3>
+                                                <font color="black">
+                                                    <p>With properties in Gujarat, Royal-Stay Resorts epitomises luxury
+                                                        in
+                                                        blissful settings.
+                                                        Making a promise of service excellence delivered by our
+                                                        attentive staff, all our
+                                                        resorts make for
+                                                        excellent choices for your holiday.</p>
+                                                    <p>Spread across acres of lush greenery, the resorts encompass
+                                                        speciality restaurants to
+                                                        pamper your
+                                                        palate, complemented by a host of wellness and recreation
+                                                        facilities.</p></font><br>
+                                                <h3>Royal-Stay In {{resort.city_id.city_name}}</h3>
+                                                <p>{{resort.r_description}}</p><br>
+                                                <h3>Located At,</h3>
+                                                <p>{{resort.Resort_address }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="book-img-2">
+                                        <img src="{% static 'imgs/' %}{{resort.cover_image}}" alt="Images" height="60%">
+                                    </div>
+
+                                </div>
+                                <!--overview-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs_item">
+                    <div class="gallery-tab-item">
+                        <div>
+                            <div class="row">
+                                <!---->
+                                <h4>Packages</h4>
+                                <div class="row pt-45">
+                                    {% for data in packages %}
+                                    <div class="col-lg-6">
+                                        <div class="blog-card">
+                                            <div class="row align-items-center">
+                                                <div class="col-lg-5 col-md-4 p-0">
+                                                    <div class="blog-img">
+                                                        <a href="/Client/fdetails/{{data.package_id}}">
+                                                            <img src="{% static 'imgs/' %}{{data.image_path}}"
+                                                                 alt="Images" height="350">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-7 col-md-8 p-0">
+                                                    <div class="blog-content">
+                                                        <h3><u><font color="#B56952">{{data.package_name}}</font></u>
+                                                        </h3>
+                                                        <p><b>Make Stay Royal With Royal-Stay<br></b></p>
+                                                        <p>{{data.p_Description}}</p>
+                                                        <p>
+                                                            Package starting from <b>₹{{data.ammount}}</b> for maximum 3 people.
+                                                        </p>
+                                                        <a href="/Client/fdetails/{{data.package_id}}" class="get-btn"
+                                                           style="color:#B56952; text-align:left;
+                                                            text-decoration:underline">View
+                                                            More</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <!--packages-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs_item">
+                    <div class="gallery-tab-item">
+                        <div>
+                            <div class="row">
+                                <!---->
+                                <h4>Rooms</h4>
+                                <div class="blog-area">
+                                    <div class="container">
+                                        <div class="row pt-45">
+                                            {% for data in rooms %}
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="blog-item">
+                                                    <a href="/Client/rdetails/">
+                                                        <!--                        <img src="{% static 'assets/img/myimgs/all resorts/ahmd.jpeg' %}" width="430" style="border-radius: 15px;">-->
+                                                        <img src="{% static 'imgs/' %}{{data.room_img}}"
+                                                             alt="Images"
+                                                             width="430" height="300"
+                                                             style="border-radius: 15px;">
+                                                    </a>
+                                                    <div class="room-item reservation-room">
+                                                        <div class="content">
+                                                            <h3><a href="room-details.html">{{data.room_name}}</a>
+                                                            </h3>
+                                                            <p></p>
+                                                            <ul>
+                                                                <li class="text-color">₹{{data.price}}</li>
+                                                                <li><span>Per Night</span></li>
+                                                            </ul>
+                                                            <a href="/Client/rdetails/{{data.room_id}}" class="book-btn">View Details</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Rooms-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tabs_item">
+                    <div class="gallery-tab-item">
+                        <div class="gallery-view">
+                            <div class="row">
+                                <!---->
+                                <h4>Gallery</h4>
+                                {% for data in gallery %}
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="single-gallery">
+                                        <img src="{% static 'imgs/' %}{{data.g_image}}" alt="Images" height="300" width="500">
+                                        <a href="{% static 'imgs/' %}{{data.g_image}}" class="gallery-icon">
+                                            <i class='bx bx-plus'></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <!--Gallery-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

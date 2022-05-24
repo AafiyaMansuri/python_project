@@ -1,0 +1,148 @@
+{% load static %}
+
+<!-- Mirrored from templates.hibootstrap.com/atoli/default/sign-up.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Dec 2021 09:10:32 GMT -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'assets/fonts/flaticon.css' %}">
+
+<link rel="stylesheet" href="{% static 'assets/css/boxicons.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+
+<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'assets/css/nice-select.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'assets/css/meanmenu.css' %}">
+
+<link rel="stylesheet" href="{% static 'assets/css/jquery-ui.css' %}">
+
+<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+<link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+
+<link rel="icon" type="image/png" href="{% static 'assets/img/logos/Letterr.png' %}">
+<title>Royal-Stay Resort</title>
+
+<body>
+
+
+<div class="inner-banner inner-bg10">
+    <div class="container">
+        <div class="inner-title">
+
+            <div class="sign-up-area pt-100 pb-70">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="user-all-form">
+                                <div class="contact-form">
+                                    <div class="section-title text-center">
+                                        <span class="sp-color">Sign Up</span>
+                                        <h2>Create an Account!</h2>
+                                    </div>
+                                    <form action="/Client/signup/" method="post">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <input type="text" name="c_name" id="name" class="form-control"
+                                                           required data-error="Please enter your Username"
+                                                           maxlength="20" minlength="3"
+                                                           placeholder="Username"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <input type="email" name="c_email" id="email" class="form-control"
+                                                           required data-error="Please enter email"
+                                                           placeholder="Email"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <input class="form-control" type="password" name="password"
+                                                           placeholder="Password"
+                                                           pattern="(?=.*[0-9])(?=.*[!@#$%&])[a-zA-Z0-9!@#$%&].{8,}"
+                                                           title="One character is must be upper case,One character must be special character, one character must be number character and password must be 8 character"
+                                                           required/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <input class="form-control" type="Number" name="contact_no"
+                                                           placeholder="Contact Number" pattern="[0-9]{10}"
+                                                           title="Contact number must be in number form and it must have 10 value"
+                                                           required/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <textarea class="form-control" name="address"
+                                                              placeholder="Address" required></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <input class="form-control" type="number" name="pincode"
+                                                           placeholder="Pincode" required/>
+
+                                                    <input class="form-control" type="hidden" name="Is_admin" value="0"
+                                                           placeholder=""/>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 text-center">
+                                                <button type="submit" class="default-btn btn-bg-three border-radius-5">
+                                                    Sign Up
+                                                </button>
+                                            </div>
+                                            <div class="col-12">
+                                                <p class="account-desc">
+                                                    Already have an account?
+                                                    <a href="/Client/signin/">Sign In</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-cfasync="false"
+        src="{% static 'cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery-3.5.1.slim.min.js' %}"></script>
+
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+<script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+<script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+
+<script src="{% static 'assets/js/wow.min.js' %}"></script>
+
+<script src="{% static 'assets/js/jquery-ui.js' %}"></script>
+
+<script src="{% static 'assets/js/meanmenu.js' %}"></script>
+
+<script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+
+<script src="{% static 'assets/js/form-validator.min.js' %}"></script>
+
+<script src="{% static 'assets/js/contact-form-script.js' %}"></script>
+
+<script src="{% static 'assets/js/custom.js' %}"></script>
+
+</body>

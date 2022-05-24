@@ -1,0 +1,279 @@
+{% extends "header_footer.html" %}
+{% load static %}
+{% block content %}
+
+<img src="{% static 'assets/img/myimgs/package/family.jpg' %}" alt="Images" width="100%" height="550">
+
+<div style="background-color:#FEF7F6; width: 100%; height: 50px; padding: 9px; margin: 5px;">
+    <marquee width="100%" direction="left">
+        <font color="black">Get a Membership For additional Discount.</font>&nbsp;&nbsp;&nbsp;<a
+            href="/Client/membership/" class="get-btn"
+            style="color:#EE786C; text-align:left;text-decoration:underline">Get Membership</a>
+    </marquee>
+</div>
+{% for data in rooms %}
+<div class="book-area-two pt-50 pb-50" xmlns="http://www.w3.org/1999/html">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="book-content-two">
+                    <div class="section-title">
+                        <div class="container">
+                            <div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="service-article">
+                                                <div class="service-facility-content">
+                                                    <h2>{{data.room_name}}</h2>
+                                                    <p>
+                                                        {{data.room_des}}
+                                                    </p>
+
+                                                    <h3>Amenities</h3>
+                                                    <ul>
+                                                        {% for s in ser %}
+                                                        <li><i class='bx bxs-check-circle'></i><font
+                                                                color="black"
+                                                                size="3">{{s.service_d}}</font></li>
+
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>
+                                                <br>
+                                                {% if "client_id" in request.session %}
+                                                {% with name_p="room1" %}
+                                                <a href="/Client/bookroom/{{room.room_id}}/{{name_p}}"
+                                                   class="default-btn btn-bg-three">
+                                                    Book Now
+                                                </a>
+                                                {% endwith %}
+                                                {% else %}
+                                                <a href="/Client/signin/"
+                                                   class="default-btn btn-bg-three">Book
+                                                    Now</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="book-img-2">
+                    <img src="{% static 'imgs/' %}{{data.room_img}}" height="600" alt="Images">
+                </div>
+            </div>
+            <h2>Add Review</h2>
+
+            <div class="room-details-review">
+
+                <div class="review-ratting">
+                    <h3>Average rating: </h3>
+                    {% if avg >= 4.0 %}
+
+                    <span class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </span>
+                    {% elif avg >= 3.0 %}
+                    <span class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                            </span>
+                    {% elif avg >= 2.0 %}
+                    <span class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </span>
+                    {% elif avg >= 1.0 %}
+                    <span class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </span>
+                    {% else %}
+                    <span class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </span>
+                    {% endif %}
+
+                </div>
+
+                <form method="post" action="/Client/feedroom/">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <table width="40%">
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                                <span class="rating">
+                                                                    <input name="rate" type="radio" value="5">
+                                                                    <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                    <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                    <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                    <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                    <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                                <span class="rating">
+                                                                    <input name="rate" type="radio" value="4">
+                                                                    <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                    <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                    <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                    <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                                <span class="rating">
+                                                                    <input name="rate" type="radio" value="3">
+                                                                    <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                    <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                    <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                                <span class="rating">
+                                                                    <input name="rate" type="radio" value="2">
+                                                                    <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                    <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                                <span class="rating">
+                                                                    <input name="rate" type="radio" value="1">
+                                                                    <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                </span>
+                                            </div>
+                                        </td>
+                            </div>
+                            </tr>
+                            </table>
+                            <textarea name="feedback" class="form-control" cols="30" rows="8" required
+                                      data-error="Write your message"
+                                      placeholder="Write your review here.... "></textarea>
+                            <input type="hidden" name="room_id" value="{{data.room_id}}"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <button type="submit" class="default-btn btn-bg-three">
+                            Submit Review
+                        </button>
+                    </div>
+
+                </form>
+
+                <br>
+                <br> <br>
+                <h2>Reviews From Other Customers ({{fc}})</h2>
+                {% for f in feed %}
+                <div class="container">
+                    <div style="width:100%">
+                        <div class="blog-article">
+                            <div class="comments-wrap">
+                                <ul>
+                                    <li>
+                                        <table>
+                                            <tr>
+                                                <td><img src="{% static 'assets/img/myimgs/user.png' %}" width="50px"/>
+                                                </td>
+                                                <td>
+                                                    <h3><b>{{f.c_id.c_name}}</b></h3>
+
+                                                    <p>
+                                                        {{f.feedback}}
+                                                    </p>
+                                                    <a>
+                                                        {% if f.rate == 5 %}
+                                                        <span class="rating">
+                                                                <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star" style="color:#EE786C"></i>
+                                                            </span>
+                                                        {% elif f.rate == 4 %}
+                                                        <span class="rating">
+                                                                <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star-o" style="color:#EE786C"></i>
+                                                            </span>
+                                                        {% elif f.rate == 3 %}
+                                                        <span class="rating">
+                                                                <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star-o" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star-o" style="color:#EE786C"></i>
+                                                            </span>
+                                                        {% elif f.rate == 2 %}
+                                                        <span class="rating">
+                                                                <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star-o" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star-o" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star-o" style="color:#EE786C"></i>
+                                                            </span>
+                                                        {% else %}
+                                                        <span class="rating">
+                                                                <i class="fa fa-star" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star-o" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star-o" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star-o" style="color:#EE786C"></i>
+                                                                <i class="fa fa-star-o" style="color:#EE786C"></i>
+                                                            </span>
+                                                        {% endif %}
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,368 @@
+{% extends "header_footer.html" %}
+{% load static %}
+{% block content %}
+
+
+<div class="inner-banner inner-bg2">
+    <div class="container">
+        <div class="inner-title">
+            <!--<ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>Contact</li>
+            </ul>-->
+            <h3>My Profile</h3>
+        </div>
+    </div>
+</div>
+<div class="gallery-area pt-100 pb-70">
+    <div class="container">
+        <div class="tab gallery-tab">
+            <ul class="tabs text-left">
+                <li>
+                    <a href="#">My profile</a>
+                </li>
+                <li>
+                    <a href="/Client/bookdata/">Bookings</a>
+                </li>
+                <li>
+                    <a href="#">Update Profile</a>
+                </li>
+                <li>
+                    <a href="#">Change Password</a>
+                </li>
+            </ul>
+            <div class="tab_content current active pt-45">
+                <div class="tabs_item current">
+                    <div class="gallery-tab-item">
+                        <div class="gallery-view">
+                            <!--my profile-->
+
+                            <div class="col-lg-6">
+
+                                <div class="contact-form" style="align:left">
+
+
+                                    <table class="display nowrap" cellspacing="10" width="100%">
+                                        <tr>
+                                            <td><p>Hello {{details.c_name}},</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Full Name:</td>
+                                            <td>{{details.c_name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email Id:</td>
+                                            <td>{{details.c_email}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Password:</td>
+                                            <td>{{details.password}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Contact Number:</td>
+                                            <td>{{details.contact_no}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address:</td>
+                                            <td>{{details.address}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pincode:</td>
+                                            <td>{{details.pincode}}</td>
+                                        </tr>
+
+                                    </table>
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <!--myprofile end-->
+                <div class="tabs_item current">
+                    <div class="gallery-tab-item">
+                        <div class="gallery-view">
+                            <table id="customers">
+                                <thead>
+                                <tr>
+                                    <th>Booking Id</th>
+                                    <th>Customer Name</th>
+                                    <th>Package Name</th>
+                                    <th>Room Name</th>
+                                    <th>Booking date</th>
+                                    <th>CheckIn Date</th>
+                                    <th>Checkout Date</th>
+                                    <th>Booking Status</th>
+                                    <th>Total</th>
+                                    <th>Payment Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for booking in book %}
+                                <tr>
+
+                                    <td>{{booking.booking_id}}</td>
+                                    <td>{{booking.c_id.c_name}}</td>
+                                    <td>{{booking.package_id.package_name}}</td>
+                                    <td>{{booking.room_id.room_name}}</td>
+                                    <td>{{booking.booking_date}}</td>
+                                    <td>{{booking.checkIn_date}}</td>
+                                    <td>{{booking.checkOut_date}}</td>
+                                    <td>
+                                        {% if booking.booking_status == 0 %}
+                                        <span> Pending</span>
+                                        {% endif %}
+                                        {% if booking.booking_status == 1 %}
+                                        <span>Conform</span>
+                                        {% endif %}
+                                        {% if booking.booking_status == 2 %}
+                                        <span>Rejected</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{booking.total}}</td>
+                                    <td>{{booking.payment_status}}</td>
+
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tabs_item">
+                    <div class="gallery-tab-item">
+                        <div class="gallery-view">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="contact-form">
+                                        <form action="/Client/clientprofile/" method="POST">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <div class="form-group">
+                                                        <input type="text" name="c_name" id="name"
+                                                               class="form-control"
+                                                               required
+                                                               data-error="Please enter your name"
+                                                               placeholder="Name" value="{{details.c_name}}"/>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12">
+                                                    <div class="form-group">
+                                                        <input type="email" name="c_email" id="email"
+                                                               class="form-control"
+                                                               required
+                                                               data-error="Please enter your email"
+                                                               placeholder="Email-Id"
+                                                               value="{{details.c_email}}"/>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12">
+                                                    <div class="form-group">
+                                                        <input type="text" name="contact_no"
+                                                               required
+                                                               data-error="Please enter your number"
+                                                               class="form-control"
+                                                               placeholder="Contact Number"
+                                                               value="{{details.contact_no}}"/>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12 col-md-12">
+                                                    <div class="form-group">
+                                                                <textarea name="address" class="form-control"
+                                                                          id="message" cols="30" rows="8" required
+                                                                          data-error="Write your message"
+                                                                          placeholder="Address">{{details.address}}</textarea>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12 col-md-12">
+                                                    <div class="form-group">
+                                                        <input type="text" name="pincode"
+                                                               required
+                                                               data-error="Please enter your number"
+                                                               class="form-control"
+                                                               placeholder="Pincode"
+                                                               value="{{details.pincode}}"/>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12">
+                                                    <div class="form-group">
+                                                        <input class="form-control" type="hidden"
+                                                               name="Is_admin" value="0" placeholder=""/>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+                                                </div>
+                                                <!--                                                        <div class="col-12">-->
+                                                <!--                                                            <div class="form-group">-->
+                                                <!--                                                                <input class="form-control" type="text"-->
+                                                <!--                                                                       name="password" placeholder="Password" value="{{details.password}}"/>-->
+                                                <!--                                                            </div>-->
+                                                <!--                                                        </div>-->
+
+                                                <div class="col-lg-12 col-md-12">
+                                                    <button type="submit" class="default-btn btn-bg-three">
+                                                        Save Changes
+                                                    </button>
+                                                    <!--                                                            <div  class="h3 text-center hidden"></div>-->
+                                                    <!--                                                            <div class="clearfix"></div>-->
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs_item">
+                    <div class="gallery-tab-item">
+                        <div class="gallery-view">
+                            <!--                            <div class="row">-->
+                            <!--                                <div class="col-lg-6">-->
+                            <!--                                    <div class="contact-form">-->
+                            <!--                                        <form action="/Client/Update_password/" method="post">-->
+                            <!--                                            {% csrf_token %}-->
+                            <!--                                            <div class="row">-->
+                            <!--                                                <div class="col-lg-12 col-md-12">-->
+                            <!--                                                    <div class="form-group">-->
+                            <!--                                                        <input type="text" name="email"-->
+                            <!--                                                               class="form-control"-->
+                            <!--                                                               required-->
+                            <!--                                                               data-error="Please enter your name"-->
+                            <!--                                                               placeholder="Email-Id" value="{{details.c_email}}"/>-->
+                            <!--                                                        <div class="help-block with-errors"></div>-->
+                            <!--                                                    </div>-->
+                            <!--                                                </div>-->
+
+                            <!--                                                <div class="col-lg-12 col-md-12">-->
+                            <!--                                                    <div class="form-group">-->
+                            <!--                                                        <input type="text" name="pass"-->
+                            <!--                                                               required-->
+                            <!--                                                               data-error="Please enter your number"-->
+                            <!--                                                               class="form-control"-->
+                            <!--                                                               placeholder="Enter your old Password"/>-->
+                            <!--                                                        <div class="help-block with-errors"></div>-->
+                            <!--                                                    </div>-->
+                            <!--                                                </div>-->
+
+                            <!--                                                <div class="col-lg-12 col-md-12">-->
+                            <!--                                                    <div class="form-group">-->
+                            <!--                                                        <input type="text" name="cpass"-->
+                            <!--                                                               class="form-control" required-->
+                            <!--                                                               data-error="Please enter your subject"-->
+                            <!--                                                               placeholder="Enter your new password"/>-->
+                            <!--                                                        <div class="help-block with-errors"></div>-->
+                            <!--                                                    </div>-->
+                            <!--                                                </div>-->
+                            <!--                                                <div class="col-lg-12 col-md-12">-->
+                            <!--                                                    <button type="submit" class="default-btn btn-bg-three">-->
+                            <!--                                                        Save Changes-->
+                            <!--                                                    </button>-->
+                            <!--                                                    <div id="msgSubmit" class="h3 text-center hidden"></div>-->
+                            <!--                                                    <div class="clearfix"></div>-->
+                            <!--                                                </div>-->
+                            <!--                                            </div>-->
+                            <!--                                        </form>-->
+                            <!--                                    </div>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <div class="ability-area section-bg pt-50 pb-70">
+                                <div class="container">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-6">
+                                            <div class="ability-content">
+                                                <div class="section-title">
+                                                    <div class="contact-form">
+                                                        <h2>Change Your Password Here!!</h2><br>
+                                                        <form action="/Client/Update_password/" method="post">
+                                                            {% csrf_token %}
+                                                            <div class="row">
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <div class="form-group">
+                                                                        <input type="text" name="email"
+                                                                               class="form-control"
+                                                                               required
+                                                                               data-error="Please enter your name"
+                                                                               placeholder="Email-Id"
+                                                                               value="{{details.c_email}}"/>
+                                                                        <div class="help-block with-errors"></div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <div class="form-group">
+                                                                        <input type="text" name="pass"
+                                                                               required
+                                                                               data-error="Please enter your number"
+                                                                               class="form-control"
+                                                                               placeholder="Enter your old Password"/>
+                                                                        <div class="help-block with-errors"></div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <div class="form-group">
+                                                                        <input type="text" name="cpass"
+                                                                               class="form-control" required
+                                                                               data-error="Please enter your subject"
+                                                                               placeholder="Enter your new password"/>
+                                                                        <div class="help-block with-errors"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <button type="submit"
+                                                                            class="default-btn btn-bg-three">
+                                                                        Save Changes
+                                                                    </button>
+                                                                    <div id="msgSubmit"
+                                                                         class="h3 text-center hidden"></div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="specialty-img-3">
+                                                <img src="{% static 'assets/img/welcome.png' %}" alt="Images"
+                                                     height="400">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}

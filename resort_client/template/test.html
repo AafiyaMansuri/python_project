@@ -1,0 +1,5 @@
+{% load static %}
+
+{% for r in c %}
+    <li class="nav-item" value="{{r.Resort_id}}"><a href="#" class="nav-link">{{r.area_id.area_name}}</a></li>
+{% endfor %}

@@ -1,0 +1,392 @@
+{% extends "header_footer.html" %}
+{% load static %}
+{% block content %}
+
+
+<!--<div class="inner-banner inner-bg11">-->
+<!--    <div class="container">-->
+<!--        <div class="inner-title">-->
+<!--            <ul>-->
+<!--                <li>-->
+<!--                    <a href="index.html">Home</a>-->
+<!--                </li>-->
+<!--                <li><i class='bx bx-chevron-right'></i></li>-->
+<!--                <li>Team</li>-->
+<!--            </ul>-->
+<!--            <h3>Team</h3>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<img src="{% static 'assets/img/myimgs/mem/m_b.jpg' %}" alt="Images" width="5000" height="600">
+
+<div class="services-area-two pt-100 pb-70">
+    <div class="container">
+        <div class="section-title text-center">
+            <h6>Royal-Stay membership is the perfect way to create magical memories with your family
+                Your holidays at Royal-Stay are filled with joy, happiness and activities so that you explore together,
+                laugh together and grow together, year after year </h6>
+            <h2>Our Memberships</h2>
+        </div>
+
+        <div class="row pt-45">
+            {% for data in mem %}
+            <div class="col-lg-4 col-sm-6">
+                <div class="services-card">
+                    <i><img src="{% static 'imgs/' %}{{data.pack_img}}" height="70" width="70"
+                            style="top:10px; position:relative; "></i>
+                    <h3><a href="/Client/getmembership/{{data.Member_id}}" style="color:black"><u>{{data.Package_name}}</u></a></h3>
+                    <p>{{data.m_description}}</p>
+                    <p><b>Pay <b>{{data.Ammount}}</b> Only</b></p>
+                    {% if cus.Member_id_id == NUll %}
+                    <a href="/Client/getmembership/{{data.Member_id}}" class="get-btn" style="color:#EE786C">Get
+                        Membership </a>
+                    {% else %}
+                    <a href="#popup1" class="get-btn" style="color:#EE786C">Get Membership </a>
+                    <div id="popup1" class="overlay">
+                        <div class="popup">
+                            <div class="content">
+                                <h3>You Have Already Member of This Resort</h3>
+                                <p><a href="/Client/membership/" class="get-btn"
+                                      style="color:#B56952; text-align:left;
+                                                            text-decoration:underline"><b>Go Back</b></a></p>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            <!--            <div class="col-lg-4 col-sm-6">-->
+            <!--                <div class="services-card" >-->
+            <!--                    <i class='fa fa-list-alt' style="color:gold"></i>-->
+            <!--                    <h3><a href="/Client/getmembership/"><u style="color:black">Gold</u></a></h3>-->
+            <!--                    <p>Royal-Stay Membership offers the added advantage of flexibility,-->
+            <!--                        keeping work and school schedules in mind.-->
+            <!--                        Members can accumulate up to 12 resort across 3 years to plan that gives you <b>" 35% "</b> Discount in your every booking-->
+            <!--                        The choice is yours! .</p>-->
+            <!--                    <p><b>Pay 35000 Only</b></p>-->
+            <!--                    <a href="/Client/getmembership/" class="get-btn"style="color:#EE786C">Get Membership </a>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <!--            <div class="col-lg-4 col-sm-6">-->
+            <!--                <div class="services-card">-->
+            <!--                   <i class='fa fa-list-alt' style="color:platinum"></i>-->
+            <!--                    <h3><a href="/Client/getmembershp/"  style="color:black"><u>Platinum</u></a></h3>-->
+            <!--                     <p>Royal-Stay Membership offers the added advantage of flexibility,-->
+            <!--                        keeping work and school schedules in mind.-->
+            <!--                         Members can accumulate up to 12 resort across 5 years  plan that gives you <b>" 50% "</b> discount in your every booking-->
+            <!--                        The choice is yours! .</p>-->
+            <!--                    <p><b>Pay 55000 Only</b></p>-->
+            <!--                    <a href="/Client/getmembership/" class="get-btn" style="color:#EE786C">Get Membership </a>-->
+            <!--                </div>-->
+            <!--            </div>-->
+        </div>
+    </div>
+</div>
+
+<div class="team-style-area pt-50 pb-70">
+    <div class="container">
+        <div class="section-title text-center">
+            <h3>BENEFITS OF A ROYAL-STAY MEMBERSHIP</h3>
+            <P><font color="black">Holidays are the best way to bond with your loved ones, and Royal-Stay Membership is
+                ideal for it.
+                It is your commitment to togetherness and discoveries. With this membership, you can enjoy future
+                holidays at
+                today's prices. Pay once and discover a wide range of resorts, destinations and curated experiences for
+                the next
+                many years. A Royal-stay Membership is a promise of fun and happiness to your loved ones.</font></P>
+        </div>
+        <div class="row pt-45">
+            <div class="col-lg-4 col-md-6">
+                <div class="team-item">
+                    <a >
+                        <img src="{% static 'assets/img/myimgs/mem/wide-resort-network.jpg' %}" alt="Images"
+                             height="250" width="500">
+                    </a>
+                    <div class="content">
+                        <h3>Wide-Resort-Network</h3>
+                        <span>Over 30 best-in-class resorts at popular as well as offbeat destinations and continuously expanding; put ‘everywhere’ on your bucket list.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="team-item">
+                    <a>
+                        <img src="{% static 'assets/img/myimgs/mem/vde.jpg' %}" alt="Images" height="250" width="500">
+                    </a>
+                    <div class="content">
+                        <h3>Destination Experiences</h3>
+                        <span>Mountains, beaches, jungles, riverside or heritage – choose from a variety of holiday experiences at diverse destinations.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="team-item">
+                    <a>
+                        <img src="{% static 'assets/img/myimgs/mem/haw.jpg' %}" alt="Images" height="250" width="500">
+                    </a>
+                    <div class="content">
+                        <h3>Holiday Around the World</h3>
+                        <span>Access more than 4,000 resorts in over 100 countries at Indian prices through RCI (Resorts Condominiums International).</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="team-item">
+                    <a>
+                        <img src="{% static 'assets/img/myimgs/mem/sroom.jpg' %}" alt="Images" height="250" width="500">
+                    </a>
+                    <div class="content">
+                        <h3>Spacious Rooms</h3>
+                        <span>Designed for families, our apartments are tastefully appointed with top-notch amenities and are sizeable, unlike cramped hotel rooms.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="team-item">
+                    <a>
+                        <img src="{% static 'assets/img/myimgs/mem/kid-friendly.jpg' %}" alt="Images" height="250"
+                             width="500">
+                    </a>
+                    <div class="content">
+                        <h3>Kid-friendly</h3>
+                        <span>Spend quality time with your partner while your kids are having fun and are taken care of at our Holiday Activity Centre.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="team-item">
+                    <a>
+                        <img src="{% static 'assets/img/myimgs/mem/flexible-points.jpg' %}" alt="Images" height="250"
+                             width="500">
+                    </a>
+                    <div class="content">
+                        <h3>Flexible Points System</h3>
+                        <span>We understand that your holiday needs can change every time. With our unique points system, enjoy complete flexibility of season, apartment type, multiple rooms and short breaks.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="team-item">
+                    <a>
+                        <img src="{% static 'assets/img/myimgs/mem/gift-of-joy.jpg' %}" alt="Images" height="250"
+                             width="500">
+                    </a>
+                    <div class="content">
+                        <h3>A Gift of Joy</h3>
+                        <span>As a Royal-Stay member, gift your loved ones a memorable holiday. Or gift them an entire membership.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="team-item">
+                    <a>
+                        <img src="{% static 'assets/img/myimgs/mem/happy-family.jpg' %}" alt="Images" height="250"
+                             width="500">
+                    </a>
+                    <div class="content">
+                        <h3>Join our Happy Holiday Family</h3>
+                        <span>Over 100,000 families are enjoying great holidays with Sterling membership for over 3 decades. Join them now.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="team-item">
+                    <a>
+                        <img src="{% static 'assets/img/myimgs/mem/hassle-free-holidays.jpg' %}" alt="Images"
+                             height="250" width="500">
+                    </a>
+                    <div class="content">
+                        <h3>Hassle-free Holidays</h3>
+                        <span>As a member, just choose where and when you want to holiday and leave the rest to us. From transfers to holiday planning, we enable hassle-free holidays all the way!
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <h3>Choice of Accommodation</h3>
+        <p><font color="black"> come in all shapes and sizes. So do our rooms. Choose the one that best suits your
+            family. At most resorts of Royal-stay, you get to choose from three types of accommodation according to your
+            holiday needs.</font></p>
+        <div class="blog-area pt-50 pb-70">
+            <div class="container">
+
+                <div class="row pt-45">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blog-item">
+
+                            <img src="{% static 'assets/img/myimgs/mem/room_1br.gif' %}" alt="Images" width="500">
+
+                            <div class="content">
+                                <h4>TWO BEDROOM</h4>
+                                <p>Take comfort to a whole new level as you stay in this spacious apartment.
+                                    Two bedrooms with king sized beds and a separate living area with a double sofa cum
+                                    bed.
+                                    Accommodates a maximum of 6 adults.</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blog-item">
+
+                            <img src="{% static 'assets/img/myimgs/mem/room_2br.gif' %}" alt="Images" width="500">
+
+                            <div class="content">
+                                <h4>ONE BEDROOM</h4>
+                                <p>Well-appointed and spacious apartments with superior facilities. Comes with a king
+                                    sized
+                                    bed and a separate living area replete with a double sofa cum bed. Accommodates a
+                                    maximum of 4
+                                    adults.</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blog-item">
+
+                            <img src="{% static 'assets/img/myimgs/mem/studio1.jpg' %}" alt="Images" width="500"
+                                 height="200">
+
+                            <div class="content">
+                                <h4>STUDIO</h4>
+                                <p>Large apartment-type room equipped with modern amenities. With a twin or queen bed
+                                    and a single sofa cum bed.
+                                    Accommodates a maximum of 2 adults and 2 children or 3 adults.</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="faq-area pt-100 pb-70 section-bg-2">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="faq-content faq-content-bg2">
+                            <div class="section-title">
+
+                                <h3>Let's Start a Free of Questions and Get a Quick Support</h3>
+                                <p>We are the agency who always gives you a priority on the free of question and you can
+                                    easily
+                                    make a question on the bunch.</p>
+                            </div>
+                            <div class="faq-accordion">
+                                <ul class="accordion">
+                                    <li class="accordion-item">
+                                        <a class="accordion-title" href="javascript:void(0)">
+                                            <i class='bx bx-plus'></i>
+                                            WHAT ARE THE ADVANTAGES OF ROYAL-STAY MEMBERSHIP OVER THE USUAL HOLIDAYS?
+                                        </a>
+                                        <div class="accordion-content">
+                                            <p>
+                                                Buying a Royal-stay Membership is the smartest way to holiday.
+                                                Royal-stay Membership has a unique and flexible package system. It gives
+                                                you complete flexibility to choose the type of accommodation and season
+                                                of your holiday every year.
+
+                                                Royal-Stay has resorts located in a wide variety of destinations –
+                                                hills, beaches, jungles, riverside, and heritage locations. Our list of
+                                                destinations is a mix of popular and unexplored locations and is
+                                                continuously expanding.
+
+                                                Sterling resorts are full service, designed for families of all sizes.
+                                                Large, well-appointed apartments and rooms, multi cuisine restaurants,
+                                                activity centers, swimming pools and spas make your holiday experience
+                                                unique and complete
+
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="accordion-item">
+                                        <a class="accordion-title" href="javascript:void(0)">
+                                            <i class='bx bx-plus'></i>
+                                            WHAT ARE Royal-Stay MEMBERSHIP Package?
+                                        </a>
+                                        <div class="accordion-content">
+                                            <p>
+                                                When you buy a royal-stay Membership plan, you actually buy package.
+                                                Different plans give you different numbers of banefits. Once you
+                                                purchase the membership plan, you can get disccount according to your
+                                                plan.
+
+                                                Royal-Stay has 3 type of membership plan 1)silver 2)gold 3)platnium
+
+                                                Let us say you have purchased a package that entitles you to 12 resorts
+                                                across yearly plan that gives you a specific Discount on your every
+                                                booking
+
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="accordion-item">
+                                        <a class="accordion-title" href="javascript:void(0)">
+                                            <i class='bx bx-plus'></i>
+                                            HOW Royal-Stay MEMBERSHIP Package work?
+                                        </a>
+                                        <div class="accordion-content">
+                                            <p>
+                                                Royal-Stay Membership offers 3 type of package 1)silver 2)gold
+                                                3)platnium
+
+                                                when you buy any of the membership package from us You will get specific
+                                                disscount in your every booking acording to your plan
+
+                                                in silver membership, Members can accumulate up to 12 resorts across 4
+                                                year to plan that gives you a " 7% " Discount on your every booking
+                                                in gold membership ,Members can accumulate up to 12 resorts across 6
+                                                years to plan that gives you a " 10% " Discount on your every booking
+                                                in platnium membership,Members can accumulate up to 12 resorts across 9
+                                                years plan that gives you a " 15% " discount on your every booking The
+                                                choice is yours!
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="accordion-item">
+                                        <a class="accordion-title active" href="javascript:void(0)">
+                                            <i class='bx bx-plus'></i>
+                                            HOW DO I PAY FOR A Royal-stay MEMBERSHIP?
+                                        </a>
+                                        <div class="accordion-content show">
+                                            <p>
+                                                We offer EMI as well as one-time payment options. You can pay using
+                                                cheques, drafts and credit cards.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="accordion-item">
+                                        <a class="accordion-title active" href="javascript:void(0)">
+                                            <i class='bx bx-plus'></i>
+                                            CAN I GIFT A HOLIDAY TO FRIENDS AND FAMILY?
+                                        </a>
+                                        <div class="accordion-content show">
+                                            <p>
+                                                Yes, you can authorise any adult to use your holiday entitlement by
+                                                notifying the company at the time of reservation and paying the
+                                                appropriate guest fees. T&C can apply
+
+                                                cards.
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="faq-img-3">
+                            <img src="{% static 'assets/img/faq/faq-img3.jpg' %}" alt="Images">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "header_footer.html" %}
+{% load static %}
+{% block content %}
+
+<img src="{% static 'assets/img/myimgs/resorts/resort.jpg' %}" alt="Images" width="100%" height="550">
+
+<div class="blog-area pt-100 pb-70">
+    <div class="container">
+        <div class="section-title text-center">
+            <span class="sp-color">Our Resorts</span>
+            <h2>Choose Your Resort According To Your Destination</h2>
+        </div>
+        <div class="row pt-45">
+            {% for data in resort %}
+            <div class="col-lg-4 col-md-6">
+                <div class="blog-item">
+                    <a href="/Client/resortdetails/{{data.Resort_id}}">
+<!--                        <img src="{% static 'assets/img/myimgs/all resorts/ahmd.jpeg' %}" width="430" style="border-radius: 15px;">-->
+                        <img src="{% static 'imgs/' %}{{data.cover_image}}" alt="Images" width="430" style="border-radius: 15px;">
+                    </a>
+                    <div class="room-item reservation-room">
+                        <div class="content">
+                            <ul>
+                                <li><span>ROYAL-STAY IN {{data.city_id.city_name}}</span></li>
+                            </ul>
+                            <a href="/Client/resortdetails/{{data.Resort_id}}" class="book-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
